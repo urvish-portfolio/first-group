@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Urvishkumar Badreshiya: an owner's review pack showing hotel and F&amp;B financial analysis for the Analyst – Hotel Asset Management role in Dubai.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000000'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='24' text-anchor='middle' fill='white'%3EUB%3C/text%3E%3C/svg%3E">
+<title>Reading the Operator's Numbers</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: an owner's monthly review pack. A black cover band, then lettered tabs (A to H) with a sticky pack index that lights up as each tab is read. Monochrome with one red for adverse variances, matched to the employer's own site. */
+:root{
+  --bg:#FFFFFF; --surface:#F6F7F8; --surface-2:#FFFFFF; --line:#DBDBDB; --ink:#000000; --body:#3F3F40; --dim:#6A6A6B;
+  --band:#000000; --band-ink:#FFFFFF; --band-dim:#B8B8B8; --slate:#20272F;
+  --adverse:#C8233A; --adverse-tint:#FCECEE; --fav:#2F6E86; --fav-tint:#E9F2F5; --mark:#EA344A;
+  --f-head:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --maxw:1160px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1114; --surface:#161A1F; --surface-2:#1B2026; --line:#2E353D; --ink:#F4F4F4; --body:#CBD0D5; --dim:#9AA2AA;
+  --band:#000000; --band-ink:#FFFFFF; --band-dim:#B8B8B8; --slate:#0A0D10;
+  --adverse:#FF6B7D; --adverse-tint:#3A1A20; --fav:#78B9D1; --fav-tint:#14262E; --mark:#FF5A6E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1114; --surface:#161A1F; --surface-2:#1B2026; --line:#2E353D; --ink:#F4F4F4; --body:#CBD0D5; --dim:#9AA2AA;
+  --band:#000000; --band-ink:#FFFFFF; --band-dim:#B8B8B8; --slate:#0A0D10;
+  --adverse:#FF6B7D; --adverse-tint:#3A1A20; --fav:#78B9D1; --fav-tint:#14262E; --mark:#FF5A6E; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--body);font-family:var(--f-body);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+a{color:var(--ink);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-head);color:var(--ink);text-wrap:balance;margin:0;text-transform:uppercase;font-weight:500;letter-spacing:.06em}
+h2{font-size:clamp(1.35rem,2.8vw,2rem);line-height:1.2}
+h3{font-size:1rem;line-height:1.35;font-weight:600;letter-spacing:.08em}
+p{margin:0}
+.eyebrow{font-family:var(--f-head);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.lede{font-size:1.06rem;max-width:66ch}
+.num{font-variant-numeric:tabular-nums}
+section{padding-block:clamp(48px,7vw,88px)}
+.sec-head{display:grid;gap:12px;margin-bottom:30px;max-width:72ch}
+.illus{display:inline-block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:2px 8px;color:var(--dim)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--band);color:var(--band-ink)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.name{font-family:var(--f-head);font-weight:600;font-size:.92rem;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--band-ink)}
+.top nav{display:flex;gap:22px;font-size:.76rem;font-family:var(--f-head);letter-spacing:.14em;text-transform:uppercase}
+.top nav a{color:var(--band-dim);text-decoration:none}
+.top nav a:hover{color:var(--band-ink)}
+@media (max-width:760px){.top nav{display:none}}
+
+/* hero */
+.hero{background:var(--band);color:var(--band-ink);padding-block:clamp(40px,7vw,84px) clamp(40px,6vw,72px)}
+.hero .eyebrow{color:var(--band-dim)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:48px;align-items:start}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+.hero h1{color:var(--band-ink);font-size:clamp(2rem,5.4vw,3.7rem);line-height:1.08;letter-spacing:.04em;margin:16px 0 22px;max-width:15ch}
+.hero .lede{color:var(--band-dim)}
+.hero .lede b{color:var(--band-ink);font-weight:600}
+.note{margin-top:18px;font-size:.86rem;color:var(--band-dim);border-left:2px solid var(--mark);padding-left:12px;max-width:60ch}
+.contact{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font-size:.9rem;color:var(--band-dim)}
+.contact span{user-select:all}
+.cover{border:1px solid rgba(255,255,255,.22);padding:22px;display:grid;gap:14px;min-width:0}
+.cover-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-head);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--band-dim)}
+.toc{list-style:none;margin:0;padding:0;display:grid}
+.toc li{border-top:1px solid rgba(255,255,255,.14)}
+.toc a{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:baseline;padding:9px 0;color:var(--band-ink);text-decoration:none;font-size:.92rem}
+.toc a:hover span{text-decoration:underline}
+.toc b{font-family:var(--f-mono);font-weight:600;color:var(--mark)}
+.toc small{font-family:var(--f-mono);color:var(--band-dim);font-size:.74rem}
+
+/* rings */
+.rings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+@media (max-width:820px){.rings{grid-template-columns:1fr}}
+.tile{background:var(--bg);padding:24px;display:grid;grid-template-columns:76px 1fr;gap:18px;align-items:center;min-width:0}
+.ring{width:76px;height:76px}
+.ring circle{fill:none;stroke-width:5}
+.ring .track{stroke:var(--line)}
+.ring .fill{stroke:var(--ink);stroke-linecap:butt;transform:rotate(-90deg);transform-origin:50% 50%}
+.tile .big{font-family:var(--f-head);font-size:1.9rem;font-weight:500;color:var(--ink);line-height:1;letter-spacing:.02em}
+.tile p{font-size:.92rem;margin-top:8px}
+
+/* pack */
+.pack{background:var(--surface)}
+.pack-grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;align-items:start}
+@media (max-width:960px){.pack-grid{grid-template-columns:1fr}.index{display:none}}
+.index{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);display:grid;gap:2px}
+@media (max-width:960px){.pack-grid .index{display:none}}
+.index a{display:grid;grid-template-columns:24px 1fr;gap:8px;padding:8px 10px;color:var(--dim);text-decoration:none;font-size:.86rem;border-left:2px solid var(--line)}
+.index a b{font-family:var(--f-mono);font-weight:600}
+.index a.on{color:var(--ink);border-left-color:var(--mark);background:var(--surface-2)}
+.tabs{display:grid;gap:28px;min-width:0}
+.tab{background:var(--surface-2);border:1px solid var(--line);padding:clamp(20px,3vw,32px);display:grid;gap:18px;min-width:0;scroll-margin-top:90px}
+.tab-head{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.tab-head .letter{font-family:var(--f-mono);font-weight:600;color:var(--mark);font-size:.9rem}
+.tab-head h3{flex:1 1 240px}
+.tab > p{max-width:70ch}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:720px){.two{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);padding:18px;display:grid;gap:10px;align-content:start;min-width:0}
+.box h4{margin:0;font-family:var(--f-head);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:600}
+.formula{font-family:var(--f-mono);font-size:.82rem;color:var(--ink);background:var(--surface);padding:8px 10px;overflow-x:auto}
+.kv{display:grid;grid-template-columns:1fr auto;gap:6px 16px;font-size:.92rem}
+.kv span:nth-child(even){font-variant-numeric:tabular-nums;color:var(--ink);font-weight:600;text-align:right}
+.kv .tot{border-top:1px solid var(--line);padding-top:6px}
+.adv{color:var(--adverse)!important}
+.fav{color:var(--fav)!important}
+
+/* statement table */
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:600 .72rem/1 var(--f-head);letter-spacing:.14em;text-transform:uppercase;padding:10px 14px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:600px;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-family:var(--f-head);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:600;background:var(--surface)}
+tbody td{color:var(--ink)}
+tr.sum td{font-weight:700;border-top:2px solid var(--ink)}
+td.flag{background:var(--adverse-tint);color:var(--adverse);font-weight:700}
+.margin{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:q}
+.margin li{counter-increment:q;display:grid;grid-template-columns:30px 1fr;gap:10px;font-size:.94rem}
+.margin li::before{content:"Q" counter(q);font-family:var(--f-mono);font-weight:600;color:var(--mark);font-size:.8rem;padding-top:2px}
+
+/* bridge */
+.chart{overflow-x:auto}
+.chart svg{display:block;width:100%;min-width:520px;height:auto}
+
+/* capex */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px}
+@media (max-width:760px){.calc{grid-template-columns:1fr}}
+.field{display:grid;gap:6px}
+.field label{display:flex;justify-content:space-between;gap:10px;font-size:.88rem;color:var(--ink);font-weight:600}
+.field label output{font-family:var(--f-mono);font-weight:600}
+input[type=range]{width:100%;accent-color:var(--ink)}
+.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);align-content:start}
+.results div{background:var(--surface-2);padding:14px;display:grid;gap:4px}
+.results small{font-family:var(--f-head);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.results b{font-family:var(--f-head);font-weight:500;font-size:1.35rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.verdict{grid-column:1/-1}
+.verdict b{font-size:1rem;font-family:var(--f-body);font-weight:600}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+@media (max-width:720px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.kpis{grid-template-columns:1fr}}
+.kpi{background:var(--surface-2);padding:16px;display:grid;gap:6px;min-width:0}
+.kpi small{font-family:var(--f-head);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.kpi b{font-family:var(--f-head);font-weight:500;font-size:1.5rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.kpi code{font-family:var(--f-mono);font-size:.74rem;color:var(--body);white-space:normal}
+
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.checks li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:.94rem}
+.checks li::before{content:"";width:12px;height:12px;border:1.5px solid var(--ink);margin-top:6px}
+.qs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);counter-reset:n}
+@media (max-width:720px){.qs{grid-template-columns:1fr}}
+.qs li{background:var(--surface-2);padding:14px 16px;counter-increment:n;display:grid;grid-template-columns:32px 1fr;gap:8px;font-size:.93rem;color:var(--ink)}
+.qs li::before{content:counter(n,decimal-leading-zero);font-family:var(--f-mono);color:var(--mark);font-weight:600;font-size:.8rem;padding-top:2px}
+
+/* brief table */
+.brief td,.brief th{white-space:normal;text-align:left;vertical-align:top}
+.brief table{min-width:560px}
+.brief td:first-child{font-weight:600;width:34%}
+.brief td{color:var(--body)}
+.brief td:first-child{color:var(--ink)}
+.pill{display:inline-block;font-family:var(--f-head);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--fav);color:var(--fav);padding:2px 8px;margin-left:6px;vertical-align:2px}
+
+/* habits */
+.habits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+@media (max-width:860px){.habits{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.habits{grid-template-columns:1fr}}
+.habit{background:var(--bg);padding:22px;display:grid;gap:10px;align-content:start;transition:background-color .2s ease,color .2s ease;min-width:0}
+.habit h3{font-size:.86rem}
+.habit p{font-size:.93rem}
+.habit:hover,.habit:focus-within{background:var(--ink)}
+.habit:hover h3,.habit:hover p,.habit:focus-within h3,.habit:focus-within p{color:var(--bg)}
+
+/* plan */
+.plan-bar{height:4px;background:var(--line);margin-bottom:22px;overflow:hidden}
+.plan-bar span{display:block;height:100%;background:var(--mark);transform-origin:0 50%}
+.plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:760px){.plan{grid-template-columns:1fr}}
+.plan div{display:grid;gap:8px;align-content:start}
+.plan small{font-family:var(--f-mono);color:var(--mark);font-weight:600;font-size:.78rem}
+
+/* faq */
+.faq{display:grid;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;padding:18px 0;font-family:var(--f-head);text-transform:uppercase;letter-spacing:.1em;font-size:.9rem;color:var(--ink);font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-mono)}
+.faq details[open] summary::after{content:"\2212"}
+.ans{padding-bottom:20px;display:grid;gap:10px;max-width:72ch}
+.ans ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.ans b{color:var(--ink)}
+
+.close{background:var(--band);color:var(--band-ink)}
+.close h2{color:var(--band-ink);max-width:28ch}
+.close .contact{margin-top:0}
+.foot{padding-block:22px;font-size:.8rem;color:var(--dim);border-top:1px solid var(--line)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.habit{transition:none}}
+</style>
+</head>
+<body>
+
+
+<header class="top"><div class="wrap">
+  <div class="name">Urvishkumar Badreshiya</div>
+  <nav aria-label="Sections"><a href="#evidence">Evidence</a><a href="#pack">Review pack</a><a href="#brief">Your brief</a><a href="#plan">First 90 days</a><a href="#faq">FAQ</a></nav>
+</div></header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Analyst – Hotel Asset Management · Dubai</p>
+      <h1>Reading the operator's numbers</h1>
+      <p class="lede">Across eight years in operations, most recently in UK hospitality, I built the operator's side of the P&amp;L: <b>sales against budget, payroll, cost of goods and guest scores</b>, week after week. This page turns that work around and reads the same lines from the owner's chair, with the questions an owner's analyst should send back.</p>
+      <p class="note">Every figure in the review pack is illustrative and built for this page. No employer's accounts appear here.</p>
+      <div class="contact"><span>urvish.mb@gmail.com</span><span>+91 99988 28555</span><span>linkedin.com/in/urvishkumar-badreshiya</span></div>
+    </div>
+    <div class="cover" aria-label="Contents of the review pack">
+      <div class="cover-top"><span>Owner's review pack</span><span>Month 10 · illustrative</span></div>
+      <ol class="toc">
+        <li><a href="#tab-a"><b>A</b><span>Statement of operations</span><small>vs budget, LY</small></a></li>
+        <li><a href="#tab-b"><b>B</b><span>Flow-through bridge</span><small>GOP</small></a></li>
+        <li><a href="#tab-c"><b>C</b><span>Payroll and cost of sales</span><small>flexed</small></a></li>
+        <li><a href="#tab-d"><b>D</b><span>Capex request review</span><small>NPV, IRR</small></a></li>
+        <li><a href="#tab-e"><b>E</b><span>Guest reputation</span><small>themes</small></a></li>
+        <li><a href="#tab-f"><b>F</b><span>Pre-opening</span><small>scenarios</small></a></li>
+        <li><a href="#tab-g"><b>G</b><span>The hotel month</span><small>RevPAR</small></a></li>
+        <li><a href="#tab-h"><b>H</b><span>Questions for the operator</span><small>8</small></a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="evidence">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">From the work itself</p><h2>Three numbers behind this page</h2></div>
+    <div class="rings">
+      <div class="tile">
+        <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="track" cx="32" cy="32" r="26"></circle><circle class="fill" cx="32" cy="32" r="26" data-frac="0.93"></circle></svg>
+        <div><div class="big num"><span data-count="9.3" data-dec="1">9.3</span>/10</div><p>Guest likelihood to return at Shake Shack Birmingham, up from 8.1 on the brand's guest-feedback platform.</p></div>
+      </div>
+      <div class="tile">
+        <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="track" cx="32" cy="32" r="26"></circle><circle class="fill" cx="32" cy="32" r="26" data-frac="1"></circle></svg>
+        <div><div class="big num"><span data-count="100">100</span>%</div><p>MBA operations simulation, all five modules, including "The New Branch".</p></div>
+      </div>
+      <div class="tile">
+        <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle class="track" cx="32" cy="32" r="26"></circle><circle class="fill" cx="32" cy="32" r="26" data-frac="0.75"></circle></svg>
+        <div><div class="big num"><span data-count="3">3</span> cases</div><p>Fresh Bake launch sales modelled at 25%, 50% and 75% of capacity before the first store opened.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pack" id="pack">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">The owner's monthly review</p><h2>One month, read line by line</h2><p class="lede">A mock pack for one Dubai hotel and its all-day dining outlet. Each tab ends in something an owner can act on: a flag, a question or a decision.</p></div>
+    <div class="pack-grid">
+      <nav class="index" aria-label="Review pack tabs">
+        <a href="#tab-a" data-tab="tab-a"><b>A</b>Statement</a>
+        <a href="#tab-b" data-tab="tab-b"><b>B</b>Flow-through</a>
+        <a href="#tab-c" data-tab="tab-c"><b>C</b>Payroll, COGS</a>
+        <a href="#tab-d" data-tab="tab-d"><b>D</b>Capex</a>
+        <a href="#tab-e" data-tab="tab-e"><b>E</b>Reputation</a>
+        <a href="#tab-f" data-tab="tab-f"><b>F</b>Pre-opening</a>
+        <a href="#tab-g" data-tab="tab-g"><b>G</b>Hotel month</a>
+        <a href="#tab-h" data-tab="tab-h"><b>H</b>Questions</a>
+      </nav>
+      <div class="tabs">
+
+        <article class="tab" id="tab-a">
+          <div class="tab-head"><span class="letter">A</span><h3>Statement of operations</h3><span class="illus">Illustrative · AED '000</span></div>
+          <p>All-day dining outlet, Month 10, in the departmental layout hotels report under USALI. Any line more than 5% adverse is flagged in red.</p>
+          <div class="seg" role="group" aria-label="Compare actual against">
+            <button type="button" id="cmp-bud" aria-pressed="true">Against budget</button>
+            <button type="button" id="cmp-ly" aria-pressed="false">Against last year</button>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Line</th><th>Actual</th><th>% rev</th><th id="cmp-h">Budget</th><th>% rev</th><th>Variance</th><th>Var %</th></tr></thead>
+              <tbody id="stmt"></tbody>
+            </table>
+          </div>
+          <ol class="margin">
+            <li>Revenue is 5.6% under budget. Split it into covers and average spend before anything else, because each has a different fix.</li>
+            <li>Payroll rose while revenue fell. What was the flexed budget, and who approved the extra hours?</li>
+            <li>Departmental profit fell AED 96k on a revenue shortfall of AED 70k. The outlet lost more profit than it lost sales, so costs did not move with volume.</li>
+          </ol>
+        </article>
+
+        <article class="tab" id="tab-b">
+          <div class="tab-head"><span class="letter">B</span><h3>Flow-through bridge</h3><span class="illus">Illustrative · AED '000</span></div>
+          <p>Hotel revenue rose AED 300k on last year, yet GOP rose by just AED 66k. That is 22% flow-through against a 50% target in the budget. The bridge shows where the missing AED 84k went, and each red bar becomes a question for the operator.</p>
+          <div class="chart" id="bridge"></div>
+          <p class="formula">Flow-through = change in GOP ÷ change in revenue = 66 ÷ 300 = 22%</p>
+        </article>
+
+        <article class="tab" id="tab-c">
+          <div class="tab-head"><span class="letter">C</span><h3>Payroll and cost of sales</h3><span class="illus">Illustrative · AED '000</span></div>
+          <p>The outlet from tab A, tested the way an owner should test it: against what the month's sales allowed, not against a number set a year earlier.</p>
+          <div class="two">
+            <div class="box">
+              <h4>Payroll against a flexed budget</h4>
+              <div class="kv">
+                <span>Budget payroll</span><span>325</span>
+                <span>Fixed part (salaried, 40%)</span><span>130</span>
+                <span>Variable part flexed to sales (195 × 0.944)</span><span>184</span>
+                <span class="tot">Flexed budget</span><span class="tot">314</span>
+                <span>Actual payroll</span><span>342</span>
+                <span class="tot">Still to explain</span><span class="tot adv">28</span>
+              </div>
+              <p class="formula">Flexed = fixed + variable × (actual revenue ÷ budget revenue)</p>
+            </div>
+            <div class="box">
+              <h4>Cost of sales: theory against actual</h4>
+              <div class="kv">
+                <span>Theoretical food cost (recipe costing)</span><span>28.4%</span>
+                <span>Actual cost of sales</span><span>30.0%</span>
+                <span class="tot">Gap on AED 1,180k revenue</span><span class="tot adv">≈ 19</span>
+              </div>
+              <p>Before accepting the gap, ask for the waste log, staff meals and comps, transfers between outlets, and supplier price changes since the budget was set.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="tab" id="tab-d">
+          <div class="tab-head"><span class="letter">D</span><h3>Capex request review</h3><span class="illus">Illustrative · move the sliders</span></div>
+          <p>Request from the operator: replace two combi ovens in the main kitchen, with savings claimed on energy, labour and waste. The owner's question is whether the claimed saving pays back the spend over the oven's life. The method is the five-year relevant-cash-flow appraisal from my MBA finance coursework, which tested a new product line the same way.</p>
+          <div class="calc">
+            <div class="field-list" style="display:grid;gap:16px">
+              <div class="field"><label for="cx-cost">Capital cost (AED) <output id="o-cost">85,000</output></label><input type="range" id="cx-cost" min="30000" max="200000" step="5000" value="85000"></div>
+              <div class="field"><label for="cx-save">Annual saving claimed (AED) <output id="o-save">30,000</output></label><input type="range" id="cx-save" min="5000" max="80000" step="1000" value="30000"></div>
+              <div class="field"><label for="cx-life">Useful life (years) <output id="o-life">5</output></label><input type="range" id="cx-life" min="2" max="10" step="1" value="5"></div>
+              <div class="field"><label for="cx-rate">Owner's discount rate <output id="o-rate">10%</output></label><input type="range" id="cx-rate" min="4" max="18" step="1" value="10"></div>
+            </div>
+            <div class="results" aria-live="polite">
+              <div><small>Payback</small><b id="r-pay">2.8 yrs</b></div>
+              <div><small>NPV</small><b id="r-npv">AED 28,724</b></div>
+              <div><small>IRR</small><b id="r-irr">22.5%</b></div>
+              <div><small>Break-even saving</small><b id="r-be">AED 22,423</b></div>
+              <div class="verdict"><small>Read-out</small><b id="r-verdict">Approve, subject to evidence for the claimed saving.</b></div>
+            </div>
+          </div>
+          <p>Break-even saving is the smallest yearly saving that still returns the owner's rate. The gap between that and the claimed saving is the margin for error the owner is buying.</p>
+        </article>
+
+        <article class="tab" id="tab-e">
+          <div class="tab-head"><span class="letter">E</span><h3>Guest reputation</h3><span class="illus">Illustrative · mentions per quarter</span></div>
+          <p>A review score tells the owner how guests feel. The repeated themes behind it say what to fix and which cost line the fix will touch. Each quarter, count the themes, tie each one to a rota or cost line, and check the next quarter's count to see whether the fix held.</p>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>Theme in reviews</th><th>Last qtr</th><th>This qtr</th><th>Trend</th><th>Line it touches</th></tr></thead>
+              <tbody>
+                <tr><td>Breakfast wait at peak</td><td>18</td><td>31</td><td class="flag">+72%</td><td>Rota, 07:30 to 09:30</td></tr>
+                <tr><td>Check-in queue</td><td>14</td><td>22</td><td class="flag">+57%</td><td>Front-office payroll</td></tr>
+                <tr><td>Room-service food arrives cold</td><td>9</td><td>6</td><td class="fav">−33%</td><td>Equipment (hot boxes)</td></tr>
+                <tr><td>Pool towels run out</td><td>7</td><td>4</td><td class="fav">−43%</td><td>Laundry contract</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="tab" id="tab-f">
+          <div class="tab-head"><span class="letter">F</span><h3>Pre-opening</h3><span class="illus">Real method · illustrative checklist</span></div>
+          <p>Before Fresh Bake's first store opened, I worked on its launch sales scenarios at 25%, 50% and 75% of capacity, each with a food and drink split and weekly product usage. A pre-opening budget for a hotel outlet deserves the same three cases, because the opening month rarely lands on the middle one.</p>
+          <ul class="checks">
+            <li>Pre-opening payroll ramp set against the confirmed opening date, with the cost of a two-week slip shown</li>
+            <li>Training weeks per role, costed and in the budget</li>
+            <li>Opening stock sized to the low case, with reorder points for the high case</li>
+            <li>Snag list closed and signed before handover from the contractor</li>
+            <li>Brand-standard and system costs from the new flag included from day one</li>
+          </ul>
+        </article>
+
+        <article class="tab" id="tab-g">
+          <div class="tab-head"><span class="letter">G</span><h3>The hotel month</h3><span class="illus">Illustrative · 200 keys, 30 days</span></div>
+          <p>The first numbers an owner reads. The logic is the one used on restaurant covers and average spend: volume times rate, then cost per unit sold.</p>
+          <div class="kpis">
+            <div class="kpi"><small>Occupancy</small><b>78%</b><code>4,680 sold ÷ 6,000 available</code></div>
+            <div class="kpi"><small>ADR</small><b>AED 550</b><code>rooms revenue ÷ rooms sold</code></div>
+            <div class="kpi"><small>RevPAR</small><b>AED 429</b><code>ADR × occupancy</code></div>
+            <div class="kpi"><small>TRevPAR</small><b>AED 650</b><code>total revenue ÷ rooms available</code></div>
+            <div class="kpi"><small>GOP margin</small><b>34%</b><code>1,326 ÷ 3,900 (AED '000)</code></div>
+            <div class="kpi"><small>GOPPAR</small><b>AED 221</b><code>GOP ÷ rooms available</code></div>
+          </div>
+          <p>Read together: revenue grew on last year, but GOPPAR grew 5% while total revenue per available room grew 8%. That points back to tab B, where the cost lines that did not flex are listed.</p>
+        </article>
+
+        <article class="tab" id="tab-h">
+          <div class="tab-head"><span class="letter">H</span><h3>Questions for the operator</h3></div>
+          <ol class="qs">
+            <li>Split the revenue variance into volume and rate for rooms, and covers and spend for F&amp;B.</li>
+            <li>Show payroll against a flexed budget as well as the original one.</li>
+            <li>Explain any line more than 5% adverse in writing, with an owner and a date.</li>
+            <li>Put the next three months' forecast next to the budget.</li>
+            <li>List open capex requests with payback and status.</li>
+            <li>Report review themes, with the score alongside.</li>
+            <li>Show utilities per occupied room against last year.</li>
+            <li>Confirm brand fees and system charges match the management agreement.</li>
+          </ol>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="brief">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">Your brief, my evidence</p><h2>Where to look for each requirement</h2></div>
+    <div class="tbl-wrap brief">
+      <table>
+        <thead><tr><th>You asked for</th><th>Where the evidence is</th></tr></thead>
+        <tbody>
+          <tr><td>Review operator reports and analyse results <span class="pill">Strong</span></td><td>I wrote those reports on the operator side every week. CV, Shake Shack; tabs A and H here.</td></tr>
+          <tr><td>Challenge budgets and assumptions <span class="pill">Strong</span></td><td>Site benchmarking and variance explanations in the period accounts. CV, Shake Shack; tab C here.</td></tr>
+          <tr><td>Payroll, productivity and cost-of-goods analysis <span class="pill">Strong</span></td><td>Payroll run in-house, sales per labour hour, a twice-monthly cost report. CV; tab C here.</td></tr>
+          <tr><td>Break-even, ROI, payback and capex review <span class="pill">Strong</span></td><td>Equipment requests and repair quotes on the CV; the MBA appraisal method in tab D.</td></tr>
+          <tr><td>Online reputation analysis <span class="pill">Strong</span></td><td>Likelihood to return 8.1 to 9.3, above; the theme tracker in tab E.</td></tr>
+          <tr><td>Pre-opening support <span class="pill">Strong</span></td><td>Two openings on the CV; the Fresh Bake launch cases in tab F.</td></tr>
+          <tr><td>Advanced Excel; bachelor's degree, MBA preferred <span class="pill">Strong</span></td><td>Excel, Power BI and Python (pandas, NumPy). MBA in Operations Management and a B.Tech.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="pack" aria-labelledby="habits-h">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">How I work</p><h2 id="habits-h">Six habits I would bring to every pack</h2></div>
+    <div class="habits">
+      <div class="habit" tabindex="0"><h3>Variance before verdict</h3><p>Split every gap into its drivers before deciding whose problem it is.</p></div>
+      <div class="habit" tabindex="0"><h3>Flex the budget</h3><p>Judge payroll against what the month's sales allowed.</p></div>
+      <div class="habit" tabindex="0"><h3>The five percent line</h3><p>Anything more than 5% adverse gets a written reason, a name and a date.</p></div>
+      <div class="habit" tabindex="0"><h3>Payback first</h3><p>Every capex request starts with one question: how many months until it pays for itself?</p></div>
+      <div class="habit" tabindex="0"><h3>Themes over scores</h3><p>The score says how guests feel. The repeated theme says what to fix.</p></div>
+      <div class="habit" tabindex="0"><h3>Same layout each month</h3><p>One format and one set of questions, so any change stands out at once.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">First 90 days</p><h2>From learning the portfolio to the first budget challenge</h2></div>
+    <div class="plan-bar" aria-hidden="true"><span></span></div>
+    <div class="plan">
+      <div><small>Days 1–30</small><h3>Learn each hotel</h3><p>Read each property's management agreement, budget and monthly pack, and meet the finance lead at each operator.</p></div>
+      <div><small>Days 31–60</small><h3>One tracker</h3><p>Build a single variance and flow-through tracker across the portfolio, with flexed payroll for every outlet.</p></div>
+      <div><small>Days 61–90</small><h3>First challenge cycle</h3><p>Run the first round of budget questions with operators and review every open capex request on payback.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="pack">
+  <div class="wrap">
+    <div class="sec-head"><p class="eyebrow">FAQ</p><h2>Questions you might have</h2></div>
+    <div class="faq">
+      <details open><summary>Why The First Group?</summary><div class="ans"><p>The First Group sells hotel rooms and serviced apartments to private investors and runs the hotels on their behalf. Three of its Dubai hotels are moving to Marriott brands, and each conversion brings new fees, brand standards and capex requests that owners need checked line by line.</p><p>That checking is the work I want to do. Years of building these numbers on the operator's side have taught me where they bend.</p></div></details>
+      <details><summary>What will I bring with me?</summary><div class="ans"><ul>
+        <li><b>P&amp;L reading:</b> net sales through cost of goods, staff costs and controllables to site contribution, every period.</li>
+        <li><b>Payroll and productivity:</b> payroll processed myself, labour planned to the forecast.</li>
+        <li><b>Cost of goods:</b> stock counts, supplier checks and variance work.</li>
+        <li><b>Forecasting:</b> daily and weekly sales forecasts, set and owned.</li>
+        <li><b>Appraisal:</b> payback, break-even and discounted cash flow.</li>
+        <li><b>Guest feedback:</b> public review replies, score tracking and fixes on the floor.</li>
+        <li><b>Tools:</b> advanced Excel, Power BI, Python (pandas, NumPy).</li>
+      </ul></div></details>
+      <details><summary>UAE visa, relocation and start date</summary><div class="ans"><p>I would join on a UAE employment visa. I will move to Dubai full-time and can start immediately.</p></div></details>
+      <details><summary>Why this move?</summary><div class="ans"><p>Operators answer for the month. Owners answer for the asset over years. After managing hospitality costs from the operator's side, the owner's side is where my numbers work can do the most.</p></div></details>
+      <details><summary>Qualifications</summary><div class="ans"><p>MBA in Operations Management, Aston University. B.Tech in Mechanical Engineering. BCS Foundation and Practitioner certificates in Business Analysis.</p></div></details>
+      <details><summary>Languages</summary><div class="ans"><p>English, Hindi and Gujarati.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap" style="display:grid;gap:16px">
+    <p class="eyebrow" style="color:var(--band-dim)">Thank you for reading</p>
+    <h2>I would like to read The First Group's operator packs the way an owner would want them read.</h2>
+    <div class="contact"><span>urvish.mb@gmail.com</span><span>+91 99988 28555</span></div>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="wrap">Personal page. Not affiliated with or endorsed by any employer named here. All review-pack figures are illustrative.</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var NS="http://www.w3.org/2000/svg";
+  function s(tag,a,txt){var e=document.createElementNS(NS,tag);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;return e;}
+  function v(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+  function fmt(n){return Math.round(n).toLocaleString('en-US');}
+
+  document.querySelectorAll('.ring .fill').forEach(function(c){var L=2*Math.PI*26;c.style.strokeDasharray=L;c.style.strokeDashoffset=L*(1-parseFloat(c.dataset.frac));c.dataset.len=L;});
+
+  // A: statement of operations (illustrative, AED '000). Costs: higher is adverse.
+  var ROWS=[['Revenue',1180,1250,1140,0],['Cost of sales',354,350,336,1],['Payroll and related',342,325,331,1],['Other operating expenses',130,125,120,1],['Departmental profit',354,450,353,0]];
+  var mode=1;
+  function stmt(){
+    var tb=document.getElementById('stmt');tb.innerHTML='';
+    document.getElementById('cmp-h').textContent=mode===1?'Budget':'Last year';
+    ROWS.forEach(function(r,i){
+      var a=r[1],c=r[1+mode],rev=ROWS[0][1],crev=ROWS[0][1+mode],d=a-c,p=d/c*100;
+      var adverse=r[4]?d>0:d<0,flag=adverse&&Math.abs(p)>5;
+      var tr=document.createElement('tr');if(i===ROWS.length-1)tr.className='sum';
+      var cells=[r[0],fmt(a),(a/rev*100).toFixed(1)+'%',fmt(c),(c/crev*100).toFixed(1)+'%',(d>0?'+':d<0?'−':'')+fmt(Math.abs(d)),(p>0?'+':p<0?'−':'')+Math.abs(p).toFixed(1)+'%'];
+      cells.forEach(function(t,j){var td=document.createElement('td');td.textContent=t;if(j>=5){if(flag)td.className='flag';else if(!adverse&&d!==0)td.className='fav';}tr.appendChild(td);});
+      tb.appendChild(tr);
+    });
+  }
+  var bb=document.getElementById('cmp-bud'),bl=document.getElementById('cmp-ly');
+  function setMode(m){mode=m;bb.setAttribute('aria-pressed',m===1);bl.setAttribute('aria-pressed',m===2);stmt();}
+  bb.addEventListener('click',function(){setMode(1);});bl.addEventListener('click',function(){setMode(2);});
+  stmt();
+
+  // B: flow-through bridge (illustrative, AED '000), axis starts at 1,200
+  var BR=[['Last year GOP',0,1260,'t'],['Revenue +300 at 50% target',1260,1410,'u'],['Expected GOP',0,1410,'t'],['Payroll',1410,1370,'d'],['Utilities',1370,1348,'d'],['F&B cost of sales',1348,1334,'d'],['Other costs',1334,1326,'d'],['Actual GOP',0,1326,'t']];
+  function bridge(){
+    var host=document.getElementById('bridge');host.innerHTML='';
+    var W=640,L=190,R=60,T=8,rh=34,H=T+BR.length*rh+34,lo=1200,hi=1440,x=function(val){return L+(W-L-R)*(val-lo)/(hi-lo);};
+    var svg=s('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':'Bridge from last year GOP of 1,260 to actual GOP of 1,326 thousand dirhams, against an expected 1,410'});
+    [1200,1260,1320,1380,1440].forEach(function(t){
+      svg.appendChild(s('line',{x1:x(t),x2:x(t),y1:T,y2:H-26,stroke:v('--line'),'stroke-width':1}));
+      svg.appendChild(s('text',{x:x(t),y:H-8,'text-anchor':'middle',fill:v('--dim'),'font-size':11,'font-family':v('--f-mono')},fmt(t)));
+    });
+    BR.forEach(function(b,i){
+      var y=T+i*rh,a=b[3]==='t'?lo:Math.min(b[1],b[2]),z=b[3]==='t'?b[2]:Math.max(b[1],b[2]);
+      var col=b[3]==='t'?v('--ink'):b[3]==='u'?v('--fav'):v('--adverse');
+      svg.appendChild(s('text',{x:L-12,y:y+21,'text-anchor':'end',fill:v('--ink'),'font-size':12.5,'font-family':v('--f-body'),'font-weight':b[3]==='t'?700:400},b[0]));
+      svg.appendChild(s('rect',{class:'bar',x:x(a),y:y+7,width:Math.max(2,x(z)-x(a)),height:20,fill:col}));
+      var lab=b[3]==='t'?fmt(b[2]):(b[2]>b[1]?'+':'−')+fmt(Math.abs(b[2]-b[1]));
+      svg.appendChild(s('text',{x:x(z)+8,y:y+21,fill:col,'font-size':12,'font-weight':700,'font-family':v('--f-mono')},lab));
+    });
+    host.appendChild(svg);
+  }
+  bridge();
+  try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',bridge);}catch(e){}
+
+  // D: capex calculator
+  function npv(c,sv,n,r){var t=-c;for(var k=1;k<=n;k++)t+=sv/Math.pow(1+r,k);return t;}
+  function irr(c,sv,n){var lo=-0.99,hi=1;if(npv(c,sv,n,hi)>0)return null;for(var i=0;i<80;i++){var m=(lo+hi)/2;if(npv(c,sv,n,m)>0)lo=m;else hi=m;}return (lo+hi)/2;}
+  var ids=['cost','save','life','rate'];
+  function calc(){
+    var c=+document.getElementById('cx-cost').value,sv=+document.getElementById('cx-save').value,n=+document.getElementById('cx-life').value,r=+document.getElementById('cx-rate').value/100;
+    document.getElementById('o-cost').textContent=fmt(c);document.getElementById('o-save').textContent=fmt(sv);document.getElementById('o-life').textContent=n;document.getElementById('o-rate').textContent=Math.round(r*100)+'%';
+    var pay=c/sv,nv=npv(c,sv,n,r),ir=irr(c,sv,n),ann=(1-Math.pow(1+r,-n))/r,be=c/ann;
+    document.getElementById('r-pay').textContent=pay>n?'Beyond life':pay.toFixed(1)+' yrs';
+    var ne=document.getElementById('r-npv');ne.textContent=(nv<0?'−':'')+'AED '+fmt(Math.abs(nv));ne.className=nv<0?'adv':'';
+    document.getElementById('r-irr').textContent=ir===null?'Over 100%':(ir*100).toFixed(1)+'%';
+    document.getElementById('r-be').textContent='AED '+fmt(be);
+    var head=(sv-be)/sv;
+    document.getElementById('r-verdict').textContent=nv<0?'Send back: the saving does not cover the owner\'s rate over the oven\'s life.':head<0.2?'Approve only with metered evidence: the claimed saving has little room for error.':'Approve, subject to evidence for the claimed saving.';
+  }
+  ids.forEach(function(k){document.getElementById('cx-'+k).addEventListener('input',calc);});
+  calc();
+
+  // sticky index
+  var links=[].slice.call(document.querySelectorAll('.index a')),tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function light(id){links.forEach(function(a){a.classList.toggle('on',a.dataset.tab===id);});}
+  light('tab-a');
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)light(e.target.id);});},{rootMargin:'-40% 0px -55% 0px'});tabs.forEach(function(t){io.observe(t);});}
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!window.gsap||!window.ScrollTrigger)return;
+  gsap.registerPlugin(ScrollTrigger);
+  var ease='power3.out';
+  function inView(el){var r=el.getBoundingClientRect();return r.top<innerHeight&&r.bottom>0;}
+  function once(el,fn){if(!el||inView(el))return;ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:fn});}
+
+  gsap.fromTo('.toc li',{x:-8},{x:0,duration:.5,ease:ease,stagger:.05,delay:.15});
+
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    once(el,function(){var end=+el.dataset.count,dec=+(el.dataset.dec||0),o={v:0};gsap.to(o,{v:end,duration:1.1,ease:ease,onUpdate:function(){el.textContent=o.v.toFixed(dec);}});});
+  });
+  document.querySelectorAll('.ring .fill').forEach(function(c){
+    once(c.closest('.tile'),function(){var L=+c.dataset.len;gsap.fromTo(c,{strokeDashoffset:L},{strokeDashoffset:L*(1-parseFloat(c.dataset.frac)),duration:1.2,ease:ease});});
+  });
+  var br=document.getElementById('bridge');
+  once(br,function(){gsap.fromTo(br.querySelectorAll('.bar'),{scaleX:0,transformOrigin:'0% 50%'},{scaleX:1,duration:.6,ease:ease,stagger:.08});});
+  var pb=document.querySelector('.plan-bar span');
+  once(pb,function(){gsap.fromTo(pb,{scaleX:0},{scaleX:1,duration:1.4,ease:'power2.inOut'});});
+  document.querySelectorAll('.tab,.habit').forEach(function(el){
+    once(el,function(){gsap.fromTo(el,{y:12},{y:0,duration:.5,ease:ease,clearProps:'transform'});});
+  });
+})();
+</script>
+
+</body>
+</html>
